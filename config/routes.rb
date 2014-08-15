@@ -2,13 +2,17 @@ Rails.application.routes.draw do
   get 'users/new'
 
   root 'static_pages#home'
-  match '/signup',  to: 'users#new',       via: :get
+  match '/signup',  to: 'users#new',       via: :get    # новый юзер
+  match '/signin',  to: 'sessions#new',       via: :get # вход на сайт
+  match '/signout',  to: 'sessions#destroy',  via: :delete # выход из сайта
+  
   match '/about', to: 'static_pages#about', via: :get
   match '/help', to: 'static_pages#help', via: :get
   match '/contact', to: 'static_pages#contact', via: :get
+  
   resources :microposts
-
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
