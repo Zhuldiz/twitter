@@ -1,23 +1,5 @@
 <% provide(:title, 'Sign up') %>
-<h1>Регестрация</h1>
+<% provide(:button, 'Регистрация') %>
+<h1>Регистрация</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-      <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
-      <%= f.label :name, "Имя" %>
-      <%= f.text_field :name %>
-
-      <%= f.label :email, "Е-майл"%>
-      <%= f.text_field :email %>
-
-      <%= f.label :password, "Пороль"%>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Подтверждение пороля" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<%= render 'form'%> <!-- нижнюю часть тела (общую) беру из _form.html.erb через render-->
