@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: :get
   
   resources :microposts, only: [:create, :destroy]
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
 
 
